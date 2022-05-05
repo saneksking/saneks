@@ -5,6 +5,8 @@ while True:
     variant = input('+ - / * %: ')
     if variant == '+':
         print(num1 + num2)
+    elif variant == '':
+        print('Вы не ввели вариант! ')
     elif variant == '-':
         print(num1 - num2)
     elif variant == '/':
