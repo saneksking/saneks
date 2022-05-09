@@ -1,3 +1,4 @@
+import random
 print('Операции с числами!'.center(5, '='))
 print(7 + 8)  # Операция сложения
 print('*' * 57)
@@ -108,7 +109,6 @@ my_list.append(6)
 print(my_list)
 print(len(my_list))
 my_list.insert(1, 13)
-print(my_list)
 print(len(my_list))
 print('-' * 57)
 print('Цикл while и for')
@@ -121,4 +121,154 @@ while i <= 5:
 my_list2 = [4, 7, 8, 2]
 
 for i in my_list2:
-    print(my_list2)
+    print(i)
+print('-' * 57)
+print('Функции и модули')
+def my_func(name):
+    print(f'Hello {name}')
+def cal(num1, num2):
+    return num1 + num2
+my_func('Saneks')
+print(cal(5, 7))
+print('-' * 57)
+print('Исключения и файлы')
+try:
+    n = 7
+    n2 = 0
+    print(n / n2)
+except ZeroDivisionError:
+    print('На ноль делить нельзя')
+finally:
+    print('Это выводится всегда')
+try:
+    raise NameError('Invalid name')
+except:
+    print('Вызвал исключение')
+assert 5 > 4
+print(4)
+file = open('test.txt', 'w')
+file.write('This is text')
+file.close()
+file = open('test.txt', 'r')
+cont = file.readlines()
+print(cont)
+file.close()
+print('-' * 57)
+print('Другие типы объектов')
+def some_func():
+    print('Hi')
+
+print(some_func())
+print('Словари')
+name = {'king': 'Saneks', 'Dad': 'Baty'}
+print(name['king'])
+print(name['Dad'])
+name[5] = 'kin'
+name['Dad'] = 'baty'
+print(name)
+print(1 in name)
+print(6 not in name)
+print('Кортежи')
+cort = ('Hello', 'world', '!')
+print(cort[0])
+print(cort[1])
+print(cort[2])
+print('Срезы')
+lis = [1, 2, 3, 4, 5, 6]
+print(lis[0:3])
+print(lis[0::2])
+print('Списковое включение')
+l = [i ** 2 for i in range(10) if i**2 % 2 == 0]
+print(l)
+print('-' * 57)
+print('Функциональнон прогоапмирование')
+def add_twice(func, arg):
+    return func(func(arg))
+def add_five(x):
+    return x + 5
+
+print(add_twice(add_five, 10))
+print('Чистая и нечистая функции')
+def new(x, y):
+    temp = x + 2 * y
+    return temp / (2 * x + y)
+print(new(5, 7))
+
+some_list = []
+def impure(arg):
+    some_list.append(arg)
+
+print(impure(6))
+print(some_list)
+print('Лямбда')
+def new2(f, arg):
+    return f(arg)
+print((lambda x: x**2 + 5*x + 4) (-4))
+new3 = (lambda y: y ** 2 + 6*y + 8)
+print(new3(5))
+print('Функции map и filter')
+def add_five(x):
+  return x + 5
+
+nums = [11, 22, 33, 44, 55]
+result = list(map(add_five, nums))
+print(result)
+
+nums = [11, 22, 33, 44, 55]
+res = list(filter(lambda x: x%2==0, nums))
+print(res)
+
+print('Генераторы')
+def countdown():
+    i=5
+    while i > 0:
+        yield i
+        i -= 1
+
+for i in countdown():
+    print(i)
+
+#def infinite_sevens():
+#  while True:
+#    yield 7
+#
+#for i in infinite_sevens():
+ # print(i)
+
+
+def numbers(x):
+    for i in range(x):
+        if i % 2 == 0:
+            yield i
+
+print(list(numbers(11)))
+print('Декораторы')
+def decor(func):
+    def wrap():
+        print('***********')
+        func()
+        print('***********')
+    return wrap
+@decor
+def hello():
+    print('hello')
+
+
+hello()
+print('Рекурсия')
+def factorial(x):
+    if x == 1:
+        return 1
+    else:
+        return x * factorial(x-1)
+
+print(factorial(5))
+print('Множества')
+num_set = {1, 2, 3, 4, 5}
+word_set = set(["spam", "eggs", "sausage"])
+
+print(3 in num_set)
+print("spam" not in word_set)
+num_set.add(7)
+num_set.remove(2)
+print(num_set)
