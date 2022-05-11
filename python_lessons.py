@@ -376,8 +376,8 @@ class Pizza:
     @pineapple_allowed.setter
     def pineapple_allowed(self, value):
         if value:
-            password = input("Enter the password: ")
-            if password == "Saneks":
+            password = input("Enter the password 123: ")
+            if password == "123":
                 self._pineapple_allowed = value
             else:
                 raise ValueError("Alert! Intruder!")
@@ -386,3 +386,59 @@ pizza = Pizza(["cheese", "tomato"])
 print(pizza.pineapple_allowed)
 pizza.pineapple_allowed = True
 print(pizza.pineapple_allowed)
+print('-' * 57)
+print('Регулярные выражения')
+import re
+patern = r'saneks'
+if re.match(patern, 'sanekssanekssaneks'):
+    print('match')
+else:
+    print('no match')
+if re.search(patern, 'ekssaneksekssaneks'):
+        print('Match')
+else:
+    print('No match')
+print(re.findall(patern, 'ekssanekssan'))
+
+math = re.search(patern, 'saneksekssanesaneks')
+print(math.group())
+print(math.start())
+print(math.end())
+print(math.span())
+str = "My name is David. Hi David."
+pattern = r"David"
+newstr = re.sub(pattern, "Saneks", str)
+print(newstr)
+print('Метасимволы')
+pattern = r"^gr.y$"
+
+if re.match(pattern, "grey"):
+    print("Match 1")
+
+if re.match(pattern, "gray"):
+    print("Match 2")
+
+if re.match(pattern, "stingray"):
+    print("Match 3")
+
+patteern = r"[A-Z][A-Z][0-9]"
+
+if re.search(patteern, "LS8"):
+    print("Match 1")
+
+if re.search(patteern, "E3"):
+    print("Match 2")
+
+if re.search(patteern, "1ab"):
+    print("Match 3")
+
+patttern = r"egg(spam)*"
+
+if re.match(patttern, "egg"):
+    print("Match 1")
+
+if re.match(patttern, "eggspamspamegg"):
+    print("Match 2")
+
+if re.match(patttern, "spam"):
+    print("Match 3")
