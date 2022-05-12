@@ -442,3 +442,11 @@ if re.match(patttern, "eggspamspamegg"):
 
 if re.match(patttern, "spam"):
     print("Match 3")
+
+print('-' * 57)
+print('Другие пакеты python')
+def function(named_arg, *args):
+    print(named_arg)
+    print(args)
+
+function(1, 2, 3, 4, 5)
