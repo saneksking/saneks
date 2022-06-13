@@ -19,7 +19,9 @@ while True:
             print('Программа выключается...')
             break
         if choice not in users:
+            print('-' * 50)
             print('Такого игрока нет')
+
             continue
         num = int(input(f'Сколько хотите добавить {choice}: '))
         users[choice] = num
