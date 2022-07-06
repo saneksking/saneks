@@ -1,7 +1,8 @@
-from os import remove
+
 
 def printInstructions(instructions):
     print(instructions)
+
 
 def getUserScore(userName):
     try:
@@ -20,7 +21,7 @@ def getUserScore(userName):
         return '-1'
 
 
-def updateUserScore(newUser, userName, score):
+def updateUserScore(newUser, userName='Anon', score='0'):
     if newUser:
         wrt = open('userScore.txt', 'a')
         wrt.write(userName + ', ' + score + '\n')
@@ -36,6 +37,3 @@ def updateUserScore(newUser, userName, score):
                 temp.write(line)
         wrt.close()
         temp.close()
-
-        remove('userScore.txt')
-

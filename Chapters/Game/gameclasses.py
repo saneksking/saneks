@@ -45,39 +45,3 @@ class BinaryGame(Game):
                     userResult = input(f'Попробуйте снова преобразовать число: {base10} ')
         return score
 
-
-class MathGame(Game):
-    def generateQuestions(self):
-        score = 0
-        numberList = [0, 0, 0, 0, 0]
-        symbolList = ['', '', '', '']
-        operatorDict = {1: ' + ', 2: ' - ', 3: ' * ', 4: '**'}
-        for i in range(self._noOfQuestions):
-            questionString = str(numberList[0])
-            for index in range(0, 5):
-                numberList[index] = random.randint(1, 9)
-            for index in range(0, 4):
-                if index > 0 and symbolList[index - 1] == '**':
-                    symbolList[index] = operatorDict[random.randint(1, 3)]
-                else:
-                    questionString = str(numberList[0])
-                questionString += symbolList[index] + str(numberList[index + 1])
-            result = eval(questionString)
-            questionString = questionString.replace('**', '^')
-            userResult = input(f'Вычислите значение выражения {questionString}: ')
-            while True:
-                try:
-                    answer = int(userResult)
-                    if answer == result:
-                        print('Правильный ответ!:)')
-                        score += 1
-                        break
-                    else:
-                        print(f'Ответ неверен!:( Вот правильный ответ: {result}')
-                        break
-                except TypeError:
-                    print('Вы ввели не число!:/')
-                    break
-        return score
-
-

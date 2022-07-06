@@ -4,11 +4,6 @@ import gameclasses
 import gametasks
 
 try:
-    mathInstructions = 'В этой игре вам предлагается решить простую арифметическую задачу.\n' \
-                       'За каждый правильный ответ вам начисляется одно очко.\n' \
-                       'За ошибочные ответы очки не вычитаются.\n' \
-                       'Приятной игры!:)'
-
     binaryInstructions = 'В этой игре вы получаете десятичное число.\n' \
                          'Ваша задача - преобразовать его в двоичную систему счисления.\n' \
                          'За каждый правильный ответ начисляется одно очко.\n' \
@@ -16,7 +11,6 @@ try:
                          'Приятной игры!:)'
 
     bg = gameclasses.BinaryGame()
-    mg = gameclasses.MathGame()
     userName = input('Введите своё имя: ')
     score = int(gametasks.getUserScore(userName))
     if score == -1:
@@ -31,10 +25,15 @@ try:
     userChoice = 0
 
     while userChoice != '-1':
-        choice = input('MathGame(1) or BinaryGame(2)?: ')
-        while choice != '1' and choice != '2':
-            print('Ты ввёл неправильный номер игры! Попробуй заново!')
+        choice = input('BinaryGame(1) or exit(-1)?: ')
+        while choice != '1' and choice != '-1':
+            if choice == '-1':
+                break
+            print('Ты ввёл неправильный номер игры или выхода! Попробуй заново!')
+            choice = input('BinaryGame(1) or exit(-1)?: ')
             continue
+        if choice == '-1':
+            break
         quest = input('Сколько вопросов ты хочешь (1-10)?: ')
         while 1:
             try:
@@ -44,10 +43,6 @@ try:
                 print('Ты ввёл не число! Попробуй заново!')
                 quest = input('Сколько вопросов ты хочешь (1-10)?: ')
         if choice == '1':
-            mg.noOfQuestions = num
-            gametasks.printInstructions(mathInstructions)
-            score += mg.generateQuestions()
-        elif choice == '2':
             bg.noOfQuestions = num
             gametasks.printInstructions(binaryInstructions)
             score += bg.generateQuestions()
@@ -58,7 +53,6 @@ try:
             break
         else:
             continue
-    gametasks.updateUserScore(True, 'Saneks', '0')
 
 
 except Exception as e:
